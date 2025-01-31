@@ -10,7 +10,7 @@ body {
 
 /* === INTRO SCREEN === */
 .logo-container {
-    position: absolute;
+    position: top;
     top: 5px;
     left: 0;
     width: 100%;
