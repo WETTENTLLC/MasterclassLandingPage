@@ -1,0 +1,370 @@
+/* === FULL PAGE BLACK BACKGROUND === */
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* === INTRO SCREEN === */
+.logo-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.logo {
+    width: 300px;
+    animation: pulse 2s infinite alternate;
+}
+
+/* Heartbeat Animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* === LANDING PAGE === */
+#landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    /* Allow scrolling */
+    overflow-y: auto;
+    min-height: 100vh; /* Ensure the page takes up at least the full viewport height */
+}
+
+/* === INTERACTIVE PLACEHOLDER === */
+.interactive-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0);
+    border: 2px solid aqua;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.delane-image {
+    width: 300%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.interactive-frame {
+    background: rgba(0, 0, 0);
+    border: 2px solid aqua;
+    padding: 20px;
+    margin: 10px;
+    width: 40%;
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* === COURSE LIST === */
+.course-list {
+    max-height: 200px;
+    overflow-y: scroll;
+    text-align: left;
+    border: 2px solid gold;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0);
+}
+
+.lesson-frame {
+    background: rgba(0, 0, 0);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lesson-frame:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.lesson-frame:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.lesson-header {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.lesson-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    padding: 0 10px;
+}
+
+.lesson-content p,
+.lesson-content ul {
+    margin: 10px 0;
+}
+
+.lesson-content ul {
+    padding-left: 20px;
+}
+
+/* Expanded State */
+.lesson-frame.expanded .lesson-content {
+    max-height: 500px; /* Adjust based on content height */
+    padding: 10px;
+}
+
+/* === VIDEO PLAYER === */
+.video-container {
+    display: none;
+    margin-top: 20px;
+}
+
+#masterclass-video {
+    width: 80%;
+    max-width: 900px;
+    border-radius: 10px;
+}
+
+/* === PLAY BUTTON === */
+.play-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cta-button {
+    background-color: #800020; /* Burgundy */
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: darkred;
+}
+
+/* === MODAL FOR LESSON DESCRIPTIONS === */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid aqua;
+    max-width: 500px;
+    width: 90%;
+}
+
+.close-modal {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    float: right;
+}
+
+/* === INTRO TITLE === */
+.intro-title {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    z-index: 1001;
+}
+
+.intro-title span {
+    display: block;
+    margin: 10px 0;
+}
+
+.dnnc {
+    position: relative;
+    font-size: 2.5rem;
+    color: transparent;
+    background: linear-gradient(90deg, gold, aqua);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.dnnc::before,
+.dnnc::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+}
+
+.dnnc::before {
+    border-top-color: gold;
+    border-right-color: gold;
+    animation: trace 2s linear forwards;
+}
+
+.dnnc::after {
+    border-bottom-color: aqua;
+    border-left-color: aqua;
+    animation: trace 2s linear forwards 1s;
+}
+
+@keyframes trace {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 100%;
+        height: 0;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* === ABOUT CONTENT === */
+.about-content {
+    max-height: 300px; /* Adjust height as needed */
+    overflow-y: auto; /* Add scrollbar if content overflows */
+    padding: 10px;
+    margin: 10px 0;
+    background: rgba(0, 0, 0);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 0);
+    text-align: left;
+    line-height: 1.6;
+}
+
+.about-content p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: white;
+}
+
+/* === SCROLLBAR STYLING === */
+.about-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.about-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.about-content::-webkit-scrollbar-thumb {
+    background: gold;
+    border-radius: 4px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* === REGISTRATION BUTTON === */
+.register-button {
+    position: relative;
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.register-button span {
+    position: relative;
+    z-index: 2; /* Ensure text is above the animation */
+}
+
+.register-button::before,
+.register-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.register-button::before {
+    border-top-color: gold;
+    border-right-color: gold;
+    animation: trace-button 2s linear forwards;
+}
+
+.register-button::after {
+    border-bottom-color: aqua;
+    border-left-color: aqua;
+    animation: trace-button 2s linear forwards 1s;
+}
+
+@keyframes trace-button {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 100%;
+        height: 0;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Hover Effect */
+.register-button:hover {
+    color: gold; /* Change text color on hover */
+}
+
+.register-button:hover::before,
+.register-button:hover::after {
+    border-color: gold; /* Change border color on hover */
+}
