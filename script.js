@@ -1,216 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delane's Masterclass</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-</head>
-<body>
+document.addEventListener("DOMContentLoaded", function () {
+    const logoIntro = document.getElementById("logo-intro");
+    const landingPage = document.getElementById("landing-page");
+    const interactiveContent = 
+document.getElementById("interactive-content");
+    const videoPlayer = document.getElementById("video-player");
+    const startVideoButton = document.getElementById("start-video");
+    const masterclassVideo = document.getElementById("masterclass-video");
 
-    <!-- Logo Intro (Fades Out Automatically) -->
-    <div id="logo-intro" class="logo-container">
-        <img src="assets/images/delanes-masterclass-logo.png" alt="Delane's Masterclass Logo" class="logo">
-        <div class="intro-title">
-            <span>WELCOME TO THE</span>
-            <span class="dnnc">DNNC MASTERCLASS</span>
-        </div>
-    </div>
+    // Remove intro and show landing page after animation
+    setTimeout(() => {
+        logoIntro.style.opacity = "0";
+        setTimeout(() => {
+            logoIntro.style.display = "none";
+            landingPage.classList.remove("hidden");
+        }, 1500);
+    }, 3000);
 
-    <!-- Interactive Placeholder (On Top of Video Player) -->
-    <div id="interactive-content" class="interactive-container">
-        <!-- Delane's Image -->
-        <img src="assets/images/delane.png" alt="Delane Sims" class="delane-image">
+    // Hide interactive elements and start video
+    startVideoButton.addEventListener("click", function () {
+        interactiveContent.style.display = "none";
+        videoPlayer.style.display = "block";
+        masterclassVideo.play();
+    });
 
-        <!-- Sections -->
-        <!-- Interactive Frame for About Mrs. Delane Sims -->
-        <div class="interactive-frame">
-            <h2>About Mrs. Delane Sims</h2>
-            <div class="about-content">
-                <p>
-                    Meet Mrs. Delane Sims – Master Pedicurist, Entrepreneur, and Mentor.
-                </p>
-                <p>
-                    Mrs. Delane Sims is more than a master pedicurist—she’s a trailblazer
-                    in the nail care industry, blending artistry with business mastery. As
-                    the founder of Delane’s Natural Nail Care (DNNC) and the Steps
-                    to Success Foundation, she has dedicated her life to elevating the
-                    standards of nail care while empowering aspiring technicians to build
-                    lucrative, client-centered businesses. With decades of hands-on
-                    experience, Mrs. Sims has developed a unique approach that prioritizes
-                    precision, wellness, and personalized service. Her expertise extends
-                    beyond technique—she teaches the critical business strategies that
-                    transform skilled nail technicians into six-figure entrepreneurs. Her
-                    passion for education, combined with her unwavering commitment to
-                    excellence, has made her an industry leader, shaping the future of nail care one student at a time.
-                </p>
-                <p>
-                    Now, through her Masterclass, Mrs. Sims is offering an exclusive
-                    opportunity to learn the secrets behind her success. This course isn’t
-                    just about perfecting pedicures—it’s about crafting a luxury
-                    experience for clients, mastering advanced foot care techniques, and
-                    developing the business acumen needed to thrive in the beauty
-                    industry. From high-end customer service to effective marketing
-                    strategies, students will gain insider knowledge on how to attract
-                    premium clients, increase revenue, and build a lasting legacy in the
-                    nail care industry. Whether you’re a beginner or a seasoned
-                    professional, this masterclass will equip you with the skills,
-                    confidence, and mentorship needed to step into your greatness. Are
-                    you ready to transform your career and become a true master in the art of pedicuring?
-                </p>
-            </div>
-        </div>
+    // Open lesson description modal
+    const lessonModal = document.getElementById("lesson-modal");
+    const lessonTitle = document.getElementById("lesson-title");
+    const lessonDescription = 
+document.getElementById("lesson-description");
+    const closeModal = document.querySelector(".close-modal");
 
-        <!-- Course Overview Section -->
-        <div class="interactive-frame">
-            <h2>Course Overview</h2>
-            <div class="course-list">
-                <!-- Lesson 1 -->
-                <div class="lesson-frame" onclick="toggleLesson(1)">
-                    <div class="lesson-header">Lesson 1: Nail Care Basics</div>
-                    <div class="lesson-content" id="lesson1">
-                        <p>Learn the fundamentals of nail care, including proper cleaning, shaping, and cuticle care.</p>
-                        <ul>
-                            <li>Introduction to tools and products</li>
-                            <li>Step-by-step nail care routine</li>
-                            <li>Common mistakes to avoid</li>
-                        </ul>
-                    </div>
-                </div>
+    window.openLesson = function (lessonId) {
+        lessonTitle.textContent = "Lesson " + lessonId;
+        lessonDescription.textContent = "Description for Lesson " + 
+lessonId + "...";
+        lessonModal.classList.remove("hidden");
+    };
 
-                <!-- Lesson 2 -->
-                <div class="lesson-frame" onclick="toggleLesson(2)">
-                    <div class="lesson-header">Lesson 2: Advanced Pedicure Techniques</div>
-                    <div class="lesson-content" id="lesson2">
-                        <p>Master advanced pedicure techniques to provide a luxurious experience for your clients.</p>
-                        <ul>
-                            <li>Exfoliation and massage techniques</li>
-                            <li>Using paraffin wax for hydration</li>
-                            <li>Nail art for pedicures</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Lesson 3 -->
-                <div class="lesson-frame" onclick="toggleLesson(3)">
-                    <div class="lesson-header">Lesson 3: Business Strategies</div>
-                    <div class="lesson-content" id="lesson3">
-                        <p>Discover the business strategies that will help you grow your nail care business.</p>
-                        <ul>
-                            <li>Marketing and branding tips</li>
-                            <li>Pricing strategies</li>
-                            <li>Client retention techniques</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Lesson 4 -->
-                <div class="lesson-frame" onclick="toggleLesson(4)">
-                    <div class="lesson-header">Lesson 4: Client Consultation</div>
-                    <div class="lesson-content" id="lesson4">
-                        <p>Learn how to conduct effective client consultations to understand their needs and preferences.</p>
-                        <ul>
-                            <li>Asking the right questions</li>
-                            <li>Building trust with clients</li>
-                            <li>Customizing services for each client</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sign Up Section -->
-        <div class="interactive-frame">
-            <h2>Sign Up for the Masterclass</h2>
-            <button class="register-button" onclick="openRegistrationModal()">
-                <span>Register Now</span>
-            </button>
-        </div>
-
-        <!-- Play Button -->
-        <div class="play-button-container">
-            <button id="start-video" class="cta-button">Click to Play Introduction Video</button>
-        </div>
-    </div>
-
-    <!-- Video Player (Initially Hidden) -->
-    <div id="video-player" class="video-container">
-        <video id="masterclass-video" controls>
-            <source src="videos/masterclass-intro.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <!-- Popup Registration Form -->
-    <div id="registrationModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeRegistrationModal()">&times;</span>
-            <h2>Masterclass Registration</h2>
-            <p>Early Bird Price: $499.99</p>
-            <form id="registrationForm">
-                <label for="fullName">Full Name:</label>
-                <input type="text" id="fullName" name="fullName" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
-
-                <label for="paymentOption">Payment Option:</label>
-                <select id="paymentOption" name="paymentOption" required onchange="togglePaymentInstructions()">
-                    <option value="zelle">Zelle</option>
-                    <option value="credit_debit">Credit/Debit Card</option>
-                </select>
-
-                <div id="zelleInstructions" style="display: none;">
-                    <p><strong>Zelle Payment Instructions:</strong></p>
-                    <p>Send your payment of $499.99 via Zelle to:</p>
-                    <p><strong>Email:</strong> payments@yourbusiness.com</p>
-                    <p>Include your full name in the payment note.</p>
-                </div>
-
-                <button type="submit">Submit Registration</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- JavaScript for Interactivity -->
-    <script>
-        // Function to toggle lesson expansion
-        function toggleLesson(lessonNumber) {
-            const lessonContent = document.getElementById(`lesson${lessonNumber}`);
-            if (lessonContent.style.display === "block") {
-                lessonContent.style.display = "none";
-            } else {
-                lessonContent.style.display = "block";
-            }
-        }
-
-        // Function to open the registration modal
-        function openRegistrationModal() {
-            const modal = document.getElementById("registrationModal");
-            modal.style.display = "block";
-        }
-
-        // Function to close the registration modal
-        function closeRegistrationModal() {
-            const modal = document.getElementById("registrationModal");
-            modal.style.display = "none";
-        }
-
-        // Function to toggle Zelle payment instructions
-        function togglePaymentInstructions() {
-            const paymentOption = document.getElementById("paymentOption").value;
-            const zelleInstructions = document.getElementById("zelleInstructions");
-            if (paymentOption === "zelle") {
-                zelleInstructions.style.display = "block";
-            } else {
-                zelleInstructions.style.display = "none";
-            }
-        }
-    </script>
-
-</body>
-</html>
+    closeModal.addEventListener("click", () => {
+        lessonModal.classList.add("hidden");
+    });
+});
