@@ -69,7 +69,7 @@
                 <!-- Lesson 1 -->
                 <div class="lesson-frame" onclick="toggleLesson(1)">
                     <div class="lesson-header">Lesson 1: Nail Care Basics</div>
-                    <div class="lesson-content">
+                    <div class="lesson-content" id="lesson1">
                         <p>Learn the fundamentals of nail care, including proper cleaning, shaping, and cuticle care.</p>
                         <ul>
                             <li>Introduction to tools and products</li>
@@ -82,7 +82,7 @@
                 <!-- Lesson 2 -->
                 <div class="lesson-frame" onclick="toggleLesson(2)">
                     <div class="lesson-header">Lesson 2: Advanced Pedicure Techniques</div>
-                    <div class="lesson-content">
+                    <div class="lesson-content" id="lesson2">
                         <p>Master advanced pedicure techniques to provide a luxurious experience for your clients.</p>
                         <ul>
                             <li>Exfoliation and massage techniques</li>
@@ -95,7 +95,7 @@
                 <!-- Lesson 3 -->
                 <div class="lesson-frame" onclick="toggleLesson(3)">
                     <div class="lesson-header">Lesson 3: Business Strategies</div>
-                    <div class="lesson-content">
+                    <div class="lesson-content" id="lesson3">
                         <p>Discover the business strategies that will help you grow your nail care business.</p>
                         <ul>
                             <li>Marketing and branding tips</li>
@@ -108,7 +108,7 @@
                 <!-- Lesson 4 -->
                 <div class="lesson-frame" onclick="toggleLesson(4)">
                     <div class="lesson-header">Lesson 4: Client Consultation</div>
-                    <div class="lesson-content">
+                    <div class="lesson-content" id="lesson4">
                         <p>Learn how to conduct effective client consultations to understand their needs and preferences.</p>
                         <ul>
                             <li>Asking the right questions</li>
@@ -175,6 +175,42 @@
             </form>
         </div>
     </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Function to toggle lesson expansion
+        function toggleLesson(lessonNumber) {
+            const lessonContent = document.getElementById(`lesson${lessonNumber}`);
+            if (lessonContent.style.display === "block") {
+                lessonContent.style.display = "none";
+            } else {
+                lessonContent.style.display = "block";
+            }
+        }
+
+        // Function to open the registration modal
+        function openRegistrationModal() {
+            const modal = document.getElementById("registrationModal");
+            modal.style.display = "block";
+        }
+
+        // Function to close the registration modal
+        function closeRegistrationModal() {
+            const modal = document.getElementById("registrationModal");
+            modal.style.display = "none";
+        }
+
+        // Function to toggle Zelle payment instructions
+        function togglePaymentInstructions() {
+            const paymentOption = document.getElementById("paymentOption").value;
+            const zelleInstructions = document.getElementById("zelleInstructions");
+            if (paymentOption === "zelle") {
+                zelleInstructions.style.display = "block";
+            } else {
+                zelleInstructions.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
