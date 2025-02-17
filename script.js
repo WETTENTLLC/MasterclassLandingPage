@@ -22,27 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
         masterclassVideo.play();
     });
 
-    // Open lesson description modal
-    const lessonModal = document.getElementById("lesson-modal");
-    const lessonTitle = document.getElementById("lesson-title");
-    const lessonDescription = document.getElementById("lesson-description");
-    const closeModal = document.querySelector(".close-modal");
-
-    window.openLesson = function (lessonId) {
-        lessonTitle.textContent = "Lesson " + lessonId;
-        lessonDescription.textContent = "Description for Lesson " + lessonId + "...";
-        lessonModal.classList.remove("hidden");
-    };
-
-    closeModal.addEventListener("click", () => {
-        lessonModal.classList.add("hidden");
-    });
-
-   // Function to toggle lesson expansion
+    // Function to toggle lesson expansion
     function toggleLesson(lessonNumber) {
-    const lessonFrame = document.querySelector(`.lesson-frame:nth-child(${lessonNumber})`);
-    if (lessonFrame) {
-        lessonFrame.classList.toggle("expanded");
+        const lessonContent = document.querySelector(`.lesson-frame:nth-child(${lessonNumber}) .lesson-content`);
+        if (lessonContent.style.maxHeight) {
+            lessonContent.style.maxHeight = null;
+        } else {
+            lessonContent.style.maxHeight = lessonContent.scrollHeight + "px";
+        }
     }
 
     // Function to open the registration modal
