@@ -38,14 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
         lessonModal.classList.add("hidden");
     });
 
-    // Function to toggle lesson expansion
+   // Function to toggle lesson expansion
     function toggleLesson(lessonNumber) {
-        const lessonContent = document.getElementById(`lesson${lessonNumber}`);
-        if (lessonContent.style.display === "block") {
-            lessonContent.style.display = "none";
-        } else {
-            lessonContent.style.display = "block";
-        }
+    const lessonFrame = document.querySelector(`.lesson-frame:nth-child(${lessonNumber})`);
+    if (lessonFrame) {
+        lessonFrame.classList.toggle("expanded");
     }
 
     // Function to open the registration modal
