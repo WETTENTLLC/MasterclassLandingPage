@@ -26,6 +26,7 @@ body {
 .logo {
     width: 300px;
     animation: pulse 2s infinite alternate;
+    margin-bottom: 20px; /* Add space between logo and text */
 }
 
 /* Heartbeat Animation */
