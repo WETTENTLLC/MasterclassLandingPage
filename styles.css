@@ -111,11 +111,15 @@ body {
     font-size: 1.1rem;
 }
 
+/* Lesson Content Styling */
 .lesson-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease, padding 0.5s ease;
     padding: 0 10px;
+    background: rgba(0, 0, 0);
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+    margin-top: 10px;
 }
 
 .lesson-content p,
