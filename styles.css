@@ -10,13 +10,14 @@ body {
 
 /* === INTRO SCREEN === */
 .logo-container {
-    position: absolute;
+    position: fixed; /* Use fixed to ensure it covers the entire screen */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -35,15 +36,40 @@ body {
     100% { transform: scale(1.1); }
 }
 
+.intro-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    z-index: 1001;
+}
+
+.intro-title span {
+    display: block;
+    margin: 10px 0;
+}
+
+.dnnc {
+    position: relative;
+    font-size: 2.5rem;
+    color: transparent;
+    background: linear-gradient(90deg, gold, aqua);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
 /* === LANDING PAGE === */
+#landing-page.hidden {
+    display: none; /* Hide landing page initially */
+}
+
 #landing-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    /* Allow scrolling */
     overflow-y: auto;
-    min-height: 100vh; /* Ensure the page takes up at least the full viewport height */
+    min-height: 100vh;
 }
 
 /* === INTERACTIVE PLACEHOLDER === */
@@ -63,7 +89,7 @@ body {
 }
 
 .delane-image {
-    width: 300%;
+    width: 100%;
     max-width: 500px;
     border-radius: 10px;
     margin: 20px;
@@ -103,16 +129,11 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.lesson-frame:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
 .lesson-header {
     font-weight: bold;
     font-size: 1.1rem;
 }
 
-/* Lesson Content Styling */
 .lesson-content {
     max-height: 0;
     overflow: hidden;
@@ -123,24 +144,9 @@ body {
     margin-top: 10px;
 }
 
-.lesson-content p,
-.lesson-content ul {
-    margin: 10px 0;
-}
-
-.lesson-content ul {
-    padding-left: 20px;
-}
-
-/* Expanded State */
 .lesson-frame.expanded .lesson-content {
     max-height: 500px; /* Adjust based on content height */
     padding: 10px;
-}
-
-.lesson-frame.expanded {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: gold;
 }
 
 /* === VIDEO PLAYER === */
@@ -206,76 +212,10 @@ body {
     float: right;
 }
 
-/* === INTRO TITLE === */
-.intro-title {
-    position: absolute;
-    bottom: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: white;
-    z-index: 1001;
-}
-
-.intro-title span {
-    display: block;
-    margin: 10px 0;
-}
-
-.dnnc {
-    position: relative;
-    font-size: 2.5rem;
-    color: transparent;
-    background: linear-gradient(90deg, gold, aqua);
-    -webkit-background-clip: text;
-    background-clip: text;
-}
-
-.dnnc::before,
-.dnnc::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 2px solid transparent;
-    box-sizing: border-box;
-}
-
-.dnnc::before {
-    border-top-color: gold;
-    border-right-color: gold;
-    animation: trace 2s linear forwards;
-}
-
-.dnnc::after {
-    border-bottom-color: aqua;
-    border-left-color: aqua;
-    animation: trace 2s linear forwards 1s;
-}
-
-@keyframes trace {
-    0% {
-        width: 0;
-        height: 0;
-    }
-    50% {
-        width: 100%;
-        height: 0;
-    }
-    100% {
-        width: 100%;
-        height: 100%;
-    }
-}
-
 /* === ABOUT CONTENT === */
 .about-content {
-    max-height: 300px; /* Adjust height as needed */
-    overflow-y: auto; /* Add scrollbar if content overflows */
+    max-height: 300px;
+    overflow-y: auto;
     padding: 10px;
     margin: 10px 0;
     background: rgba(0, 0, 0);
@@ -306,10 +246,6 @@ body {
     border-radius: 4px;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 /* === REGISTRATION BUTTON === */
 .register-button {
     position: relative;
@@ -326,7 +262,7 @@ html {
 
 .register-button span {
     position: relative;
-    z-index: 2; /* Ensure text is above the animation */
+    z-index: 2;
 }
 
 .register-button::before,
@@ -369,12 +305,11 @@ html {
     }
 }
 
-/* Hover Effect */
 .register-button:hover {
-    color: gold; /* Change text color on hover */
+    color: gold;
 }
 
 .register-button:hover::before,
 .register-button:hover::after {
-    border-color: gold; /* Change border color on hover */
+    border-color: gold;
 }
