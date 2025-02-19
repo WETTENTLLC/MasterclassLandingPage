@@ -26,7 +26,6 @@
             <label for="paymentOption">Payment Option:</label>
             <select id="paymentOption" name="paymentOption" required onchange="togglePaymentInstructions()">
                 <option value="zelle">Zelle</option>
-                <option value="credit_debit">Credit/Debit Card</option>
             </select>
 
             <!-- Zelle Payment Instructions -->
@@ -37,14 +36,15 @@
                 <p>Include your full name in the payment note.</p>
             </div>
 
+            <!-- Square Buy Now Button Integrated into Form -->
+            <div id="square-payment" class="payment-section">
+                <p>Or pay securely with Square:</p>
+                <script type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+                <button id="buyNow" class="square-buy-button">Buy Now</button>
+            </div>
+
             <button type="submit">Submit Registration</button>
         </form>
-    </div>
-
-    <!-- Square Buy Now Button -->
-    <div id="square-payment">
-        <script type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
-        <button id="buyNow" class="square-buy-button">Buy Now</button>
     </div>
 
     <!-- JavaScript for Payment Instructions -->
