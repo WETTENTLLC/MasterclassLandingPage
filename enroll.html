@@ -88,3 +88,40 @@
     </script>
 </body>
 </html>
+
+<?php
+require 'vendor/autoload.php'; // Ensure you've installed the Square SDK
+
+use Square\SquareClient;
+use Square\Models\CreatePaymentRequest;
+use Square\Exceptions\ApiException;
+
+// Set up the Square client
+$client = new SquareClient([
+  'accessToken' => 'YOUR_ACCESS_TOKEN',
+  'environment' => 'sandbox' // Or 'production'
+]);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $nonce = $_POST['nonce'];
+  $fullName = $_POST['fullName'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+
+  // Create a payment request
+  $paymentsApi = $client->getPaymentsApi();
+  $money = new \Square\Models\Money();
+  $money->setAmount(15000); // Amount in cents ($150.00)
+  $money->setCurrency('USD');
+
+  $createPaymentRequest = new CreatePaymentRequest($nonce, uniqid(), $money);
+
+  try {
+    $response = $paymentsApi->createPayment($createPaymentRequest);
+    if ($response->isSuccess()) {
+      // Payment succeeded
+      // Send confirmation emails
+      mail('delane@example.com', 'New Enrollment', "Name: $fullName\nEmail: $email\nPhone: $phone");
+      mail($email, 'Enrollment Confirmation', "
+::contentReference[oaicite:0]{index=0}
+ 
