@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 }
 
-
     // Function to open the registration modal
     function openRegistrationModal() {
         const modal = document.getElementById("registrationModal");
