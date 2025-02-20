@@ -76,3 +76,31 @@ document.addEventListener("DOMContentLoaded", function () {
         paymentOption.addEventListener("change", togglePaymentInstructions);
     }
 });
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fullName = $_POST['fullName'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+
+    // Email details
+    $admin_email = "delane@example.com"; // Replace with Delane's email
+    $subject_admin = "New Masterclass Enrollment: $fullName";
+    $message_admin = "You have a new enrollment.\n\nName: $fullName\nEmail: $email\nPhone: $phone";
+
+    // Send email to Delane
+    mail($admin_email, $subject_admin, $message_admin, "From: no-reply@dnnc.com");
+
+    // Confirmation email to user
+    $subject_user = "Welcome to the DNNC Masterclass!";
+    $message_user = "Dear $fullName,\n\nThank you for enrolling in the DNNC Masterclass! Here’s what you need to know:\n\n- Your class details and login instructions will be emailed to you shortly.\n- Ensure you have made your payment via Square.\n- For any questions, reply to this email.\n\nWe look forward to having you!\n\nBest,\nThe DNNC Team";
+
+    // Send email to the user
+    mail($email, $subject_user, $message_user, "From: no-reply@dnnc.com");
+
+    // Return success response
+    echo json_encode(["success" => true]);
+} else {
+    echo json_encode(["success" => false]);
+}
+?>
