@@ -13,7 +13,7 @@
         <p>Join Delane Sims and transform your career with elevated pedicures and business mastery.</p>
 
         <!-- Registration Form -->
-        <form id="registrationForm" action="/register" method="POST">
+        <form id="registrationForm" action="submit_enrollment.php" method="POST">
             <label for="fullName">Full Name:</label>
             <input type="text" id="fullName" name="fullName" required>
 
@@ -23,9 +23,6 @@
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" required>
 
-            </select>
-
-
             <!-- Square Buy Now Button Integrated into Form -->
             <div id="square-payment" class="payment-section">
                 <p>Pay securely with Square:</p>
@@ -33,7 +30,56 @@
                     <button type="button" class="square-buy-button">Buy Now</button>
                 </a>
             </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Enrollment</button>
         </form>
     </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How do I access the class after enrolling?</h3>
+            <p>Once you complete your enrollment, you will receive a confirmation email with instructions on accessing the class.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do I need any prior experience to take this class?</h3>
+            <p>No prior experience is required! The class is designed for beginners and professionals alike.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What payment methods are accepted?</h3>
+            <p>We accept payments via Square using credit/debit cards.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I get a refund if I can’t attend?</h3>
+            <p>Refunds are not available, but you may transfer your enrollment to another session.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            const response = await fetch('submit_enrollment.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                alert("Your enrollment is confirmed! Check your email for details.");
+            } else {
+                alert("There was an issue submitting your enrollment. Please try again.");
+            }
+        });
+    </script>
 </body>
 </html>
