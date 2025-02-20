@@ -22,15 +22,19 @@ document.addEventListener("DOMContentLoaded", function () {
         masterclassVideo.play();
     });
 
-    // Function to toggle lesson expansion
-    function toggleLesson(lessonNumber) {
-        const lessonContent = document.querySelector(`.lesson-frame:nth-child(${lessonNumber}) .lesson-content`);
-        if (lessonContent.style.maxHeight) {
-            lessonContent.style.maxHeight = null;
+   function toggleLesson(lessonId) {
+    const lessonContent = document.querySelectorAll('.lesson-content');
+    
+    lessonContent.forEach((content, index) => {
+        if (index + 1 === lessonId) {
+            // Toggle visibility
+            content.style.display = (content.style.display === "block") ? "none" : "block";
         } else {
-            lessonContent.style.maxHeight = lessonContent.scrollHeight + "px";
+            content.style.display = "none"; // Collapse other sections
         }
-    }
+    });
+}
+
 
     // Function to open the registration modal
     function openRegistrationModal() {
