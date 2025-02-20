@@ -162,18 +162,7 @@
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
 
-                <label for="paymentOption">Payment Option:</label>
-                <select id="paymentOption" name="paymentOption" required onchange="togglePaymentInstructions()">
-                    <option value="zelle">Zelle</option>
-                    <option value="credit_debit">Credit/Debit Card</option>
                 </select>
-
-                <div id="zelleInstructions" style="display: none;">
-                    <p><strong>Zelle Payment Instructions:</strong></p>
-                    <p>Send your payment of $499.99 via Zelle to:</p>
-                    <p><strong>Email:</strong> payments@yourbusiness.com</p>
-                    <p>Include your full name in the payment note.</p>
-                </div>
 
                 <button type="submit">Submit Registration</button>
             </form>
