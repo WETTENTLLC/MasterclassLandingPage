@@ -26,10 +26,9 @@
             <!-- Square Buy Now Button Integrated into Form -->
             <div id="square-payment" class="payment-section">
                 <p>Pay securely with Square:</p>
-                <a href="https://checkout.square.site/merchant/QDSWQVZ72YYH9/checkout/RZMRICBQK6KSZWDK7JAFUGKE" target="_blank">
-                    <button type="button" class="square-buy-button">Purchase Masterclass</button>
-                </a>
+                <button type="submit" class="square-buy-button">Purchase Masterclass</button>
             </div>
+        </form>
     </div>
 
     <!-- FAQ Section -->
@@ -68,6 +67,10 @@
             
             const formData = new FormData(this);
             
+            // Log the form data (you can replace this with actual logging logic)
+            console.log('Form Data Submitted:', Object.fromEntries(formData));
+
+            // Send form data to your server for logging and processing
             const response = await fetch('submit_enrollment.php', {
                 method: 'POST',
                 body: formData
@@ -77,6 +80,8 @@
             
             if (result.success) {
                 alert("Your enrollment is confirmed! Check your email for details.");
+                // Redirect to Square Checkout after successful form submission
+                window.location.href = "https://checkout.square.site/merchant/QDSWQVZ72YYH9/checkout/RZMRICBQK6KSZWDK7JAFUGKE";
             } else {
                 alert("There was an issue submitting your enrollment. Please try again.");
             }
@@ -84,3 +89,4 @@
     </script>
 </body>
 </html>
+
