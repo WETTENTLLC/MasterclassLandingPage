@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Payment succeeded
 
             // Send confirmation email to Delane
-            $admin_email = "delane@example.com"; // Replace with Delane's email
+            $admin_email = "wettentertainmentllc@gmail.com"; // Replace with Delane's email
             $subject_admin = "New DNNC Masterclass Enrollment";
             $message_admin = "A new student has enrolled:\n\nName: $fullName\nEmail: $email\nPhone: $phone";
             mail($admin_email, $subject_admin, $message_admin, "From: no-reply@dnnc.com");
