@@ -1,26 +1,47 @@
 <?php
-// submit_enrollment.php
+header('Content-Type: application/json');
 
-// Process form data
+// Database connection details
+$serverName = "WETTINC"; // Replace with your SQL Server name
+$database = "dnnc_masterclass";
+$connectionOptions = [
+    "Database" => $database,
+    "Uid" => "", // Leave empty for Windows Authentication
+    "PWD" => ""  // Leave empty for Windows Authentication
+];
+
+// Get form data
 $fullName = $_POST['fullName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 
-// Validate inputs
-if (empty($fullName) || empty($email) || empty($phone)) {
-    echo json_encode(['success' => false, 'message' => 'All fields are required.']);
-    exit;
-}
+try {
+    // Connect to SQL Server
+    $conn = sqlsrv_connect($serverName, $connectionOptions);
 
-// Log the form data to a file
-$logData = "Name: $fullName, Email: $email, Phone: $phone\n";
-$logFile = 'enrollments.log';
+    if ($conn === false) {
+        throw new Exception("Failed to connect to SQL Server: " . print_r(sqlsrv_errors(), true));
+    }
 
-if (file_put_contents($logFile, $logData, FILE_APPEND) !== false) {
+    // Insert data into the Registrations table
+    $sql = "INSERT INTO Registrations (FullName, Email, PhoneNumber, RegistrationDate)
+            VALUES (?, ?, ?, GETDATE())";
+    $params = [$fullName, $email, $phone];
+    $stmt = sqlsrv_query($conn, $sql, $params);
+
+    if ($stmt === false) {
+        throw new Exception("Failed to insert data: " . print_r(sqlsrv_errors(), true));
+    }
+
     // Return success response
-    echo json_encode(['success' => true, 'message' => 'Enrollment successful.']);
-} else {
-    // Return error response if logging fails
-    echo json_encode(['success' => false, 'message' => 'Failed to log enrollment.']);
+    echo json_encode(['success' => true]);
+} catch (Exception $e) {
+    // Return error response
+    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+} finally {
+    // Close the connection
+    if ($conn) {
+        sqlsrv_close($conn);
+    }
 }
 ?>
