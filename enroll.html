@@ -63,26 +63,44 @@
 
     <script>
         document.getElementById('registrationForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission
 
-            const formData = new FormData(this);
+    // Get form data
+    const formData = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value
+    };
 
-            // Send form data to your server for logging and processing
-            const response = await fetch('submit_enrollment.php', {
-                method: 'POST',
-                body: formData
-            });
+    console.log('Form Data:', formData); // Debugging
 
-            const result = await response.json();
-
-            if (result.success) {
-                alert("Your enrollment is confirmed! Check your email for details.");
-                // Redirect to Square Checkout after successful form submission
-                window.location.href = "https://checkout.square.site/merchant/QDSWQVZ72YYH9/checkout/RZMRICBQK6KSZWDK7JAFUGKE";
-            } else {
-                alert("There was an issue submitting your enrollment. Please try again.");
-            }
+    // Send data to the backend
+    try {
+        const response = await fetch('submit_enrollment.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
         });
+
+        console.log('Response:', response); // Debugging
+
+        const result = await response.json();
+        console.log('Result:', result); // Debugging
+
+        if (result.success) {
+            alert("Your enrollment is confirmed! Check your email for details.");
+            // Redirect to Square Checkout after successful form submission
+            window.location.href = "https://checkout.square.site/merchant/QDSWQVZ72YYH9/checkout/RZMRICBQK6KSZWDK7JAFUGKE";
+        } else {
+            alert("There was an issue submitting your enrollment. Please try again.");
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert("There was an issue submitting your enrollment. Please try again.");
+    }
+});
     </script>
 </body>
 </html>
