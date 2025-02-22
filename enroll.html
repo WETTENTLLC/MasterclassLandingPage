@@ -13,22 +13,22 @@
         <p>Join Delane Sims and transform your career with elevated pedicures and business mastery.</p>
 
         <!-- Registration Form -->
-<form id="registrationForm" action="submit_enrollment.php" method="POST">
-    <label for="fullName">Full Name:</label>
-    <input type="text" id="fullName" name="fullName" required>
+        <form id="registrationForm" action="submit_enrollment.php" method="POST">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-    <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" required>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
 
-    <!-- Square Buy Now Button Integrated into Form -->
-    <div id="square-payment" class="payment-section">
-        <p>Pay securely with Square:</p>
-        <button type="button" class="square-buy-button" onclick="redirectToSquareCheckout()">Purchase Masterclass</button>
-    </div>
-</form>
+            <!-- Square Buy Now Button Integrated into Form -->
+            <div id="square-payment" class="payment-section">
+                <p>Pay securely with Square:</p>
+                <button type="submit" class="square-buy-button">Purchase Masterclass</button>
+            </div>
+        </form>
     </div>
 
     <!-- FAQ Section -->
@@ -63,45 +63,26 @@
 
     <script>
         document.getElementById('registrationForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-    
-    const formData = new FormData(this);
-    
-    // Log the form data (you can replace this with actual logging logic)
-    console.log('Form Data Submitted:', Object.fromEntries(formData));
+            event.preventDefault();
 
-    // Send form data to your server for logging and processing
-    const response = await fetch('submit_enrollment.php', {
-        method: 'POST',
-        body: formData
-    });
+            const formData = new FormData(this);
 
-    const result = await response.json();
-    
-    if (result.success) {
-        alert("Your enrollment is confirmed! Check your email for details.");
-        // Redirect to Square Checkout after successful form submission
-        window.location.href = "https://checkout.square.site/merchant/QDSWQVZ72YYH9/checkout/RZMRICBQK6KSZWDK7JAFUGKE";
-    } else {
-        alert("There was an issue submitting your enrollment. Please try again.");
-    }
-});
+            // Send form data to your server for logging and processing
+            const response = await fetch('submit_enrollment.php', {
+                method: 'POST',
+                body: formData
+            });
 
-            function redirectToSquareCheckout() {
-            // Validate form inputs before redirecting
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
+            const result = await response.json();
 
-            if (!fullName || !email || !phone) {
-            alert("Please fill out all fields before proceeding to payment.");
-            return;
+            if (result.success) {
+                alert("Your enrollment is confirmed! Check your email for details.");
+                // Redirect to Square Checkout after successful form submission
+                window.location.href = "https://checkout.square.site/merchant/QDSWQVZ72YYH9/checkout/RZMRICBQK6KSZWDK7JAFUGKE";
+            } else {
+                alert("There was an issue submitting your enrollment. Please try again.");
             }
-
-            // Redirect to Square Checkout
-            window.location.href = "https://checkout.square.site/merchant/QDSWQVZ72YYH9/checkout/RZMRICBQK6KSZWDK7JAFUGKE";
-        }
+        });
     </script>
 </body>
 </html>
-
