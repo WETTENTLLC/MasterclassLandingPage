@@ -77,11 +77,11 @@
     // Send data to the backend
     try {
         const response = await fetch('submit_enrollment.php', {
-            method: 'POST',
+            method: 'POST', // Ensure this is POST
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json' // Ensure the content type is JSON
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData) // Ensure the body is JSON
         });
 
         console.log('Response:', response); // Debugging
