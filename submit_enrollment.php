@@ -1,6 +1,17 @@
 <?php
 header('Content-Type: application/json');
 
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Check if the request method is POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405); // Method Not Allowed
+    echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
+    exit;
+}
+
 // Database connection details
 $serverName = "WETTINC"; // Replace with your SQL Server name
 $database = "dnnc_masterclass";
@@ -11,9 +22,21 @@ $connectionOptions = [
 ];
 
 // Get form data
-$fullName = $_POST['fullName'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
+$data = json_decode(file_get_contents('php://input'), true);
+if (!$data) {
+    echo json_encode(['success' => false, 'message' => 'Invalid form data.']);
+    exit;
+}
+
+$fullName = $data['fullName'];
+$email = $data['email'];
+$phone = $data['phone'];
+
+// Validate inputs
+if (empty($fullName) || empty($email) || empty($phone)) {
+    echo json_encode(['success' => false, 'message' => 'All fields are required.']);
+    exit;
+}
 
 try {
     // Connect to SQL Server
@@ -33,9 +56,20 @@ try {
         throw new Exception("Failed to insert data: " . print_r(sqlsrv_errors(), true));
     }
 
+    // Log the form data to a file
+    $logData = "Name: $fullName, Email: $email, Phone: $phone\n";
+    $logFile = 'enrollments.log';
+
+    if (file_put_contents($logFile, $logData, FILE_APPEND) === false) {
+        throw new Exception("Failed to log enrollment data.");
+    }
+
     // Return success response
-    echo json_encode(['success' => true]);
+    echo json_encode(['success' => true, 'message' => 'Enrollment successful.']);
 } catch (Exception $e) {
+    // Log the error for debugging
+    error_log($e->getMessage());
+
     // Return error response
     echo json_encode(['success' => false, 'message' => $e->getMessage()]);
 } finally {
@@ -44,45 +78,4 @@ try {
         sqlsrv_close($conn);
     }
 }
-?>
-
-<?php
-header('Content-Type: application/json');
-
-// Database connection details
-$serverName = "WETTINC"; // Replace with your SQL Server name
-$database = "dnnc_masterclass";
-$connectionOptions = [
-    "Database" => $database,
-    "Uid" => "", // Leave empty for Windows Authentication
-    "PWD" => ""  // Leave empty for Windows Authentication
-];
-
-// Connect to SQL Server
-$conn = sqlsrv_connect($serverName, $connectionOptions);
-
-if ($conn === false) {
-    echo json_encode(['success' => false, 'message' => 'Failed to connect to SQL Server: ' . print_r(sqlsrv_errors(), true)]);
-    exit;
-}
-
-// Check if the Registrations table exists, and create it if it doesn't
-$sqlCheckTable = "IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Registrations')
-                 BEGIN
-                     CREATE TABLE Registrations (
-                         RegistrationID INT IDENTITY(1,1) PRIMARY KEY,
-                         FullName NVARCHAR(100) NOT NULL,
-                         Email NVARCHAR(100) NOT NULL,
-                         PhoneNumber NVARCHAR(20),
-                         RegistrationDate DATETIME DEFAULT GETDATE()
-                     );
-                 END";
-$stmtCheckTable = sqlsrv_query($conn, $sqlCheckTable);
-
-if ($stmtCheckTable === false) {
-    echo json_encode(['success' => false, 'message' => 'Failed to create Registrations table: ' . print_r(sqlsrv_errors(), true)]);
-    exit;
-}
-
-// Rest of your PHP script...
 ?>
