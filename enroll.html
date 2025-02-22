@@ -63,29 +63,29 @@
 
     <script>
         document.getElementById('registrationForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(this);
-            
-            // Log the form data (you can replace this with actual logging logic)
-            console.log('Form Data Submitted:', Object.fromEntries(formData));
+    event.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    // Log the form data (you can replace this with actual logging logic)
+    console.log('Form Data Submitted:', Object.fromEntries(formData));
 
-            // Send form data to your server for logging and processing
-            const response = await fetch('submit_enrollment.php', {
-                method: 'POST',
-                body: formData
-            });
+    // Send form data to your server for logging and processing
+    const response = await fetch('submit_enrollment.php', {
+        method: 'POST',
+        body: formData
+    });
 
-            const result = await response.json();
-            
-            if (result.success) {
-                alert("Your enrollment is confirmed! Check your email for details.");
-                // Redirect to Square Checkout after successful form submission
-                window.location.href = "https://checkout.square.site/merchant/QDSWQVZ72YYH9/checkout/RZMRICBQK6KSZWDK7JAFUGKE";
-            } else {
-                alert("There was an issue submitting your enrollment. Please try again.");
-            }
-        });
+    const result = await response.json();
+    
+    if (result.success) {
+        alert("Your enrollment is confirmed! Check your email for details.");
+        // Redirect to Square Checkout after successful form submission
+        window.location.href = "https://checkout.square.site/merchant/QDSWQVZ72YYH9/checkout/RZMRICBQK6KSZWDK7JAFUGKE";
+    } else {
+        alert("There was an issue submitting your enrollment. Please try again.");
+    }
+});
 
             function redirectToSquareCheckout() {
             // Validate form inputs before redirecting
