@@ -76,13 +76,13 @@
 
     // Send data to the backend
     try {
-        const response = await fetch('submit_enrollment.php', {
-            method: 'POST', // Ensure this is POST
-            headers: {
-                'Content-Type': 'application/json' // Ensure the content type is JSON
-            },
-            body: JSON.stringify(formData) // Ensure the body is JSON
-        });
+        const response = await fetch('http://localhost/MasterclassLandingPage/submit_enrollment.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+});
 
         console.log('Response:', response); // Debugging
 
