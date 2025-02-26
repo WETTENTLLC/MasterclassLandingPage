@@ -8,6 +8,10 @@ use Square\Exceptions\ApiException;
 
 header('Content-Type: application/json'); // Set response type to JSON
 
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Set up the Square client
 $client = new SquareClient([
     'accessToken' => getenv('SQUARE_ACCESS_TOKEN'), // Use environment variable for security
@@ -21,7 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
     $nonce = filter_input(INPUT_POST, 'nonce', FILTER_SANITIZE_STRING);
 
-    if (!$fullName || !$email || !$phone || !$nonce) {
+    // Check for valid inputs
+    if (!$fullName || 
+        !$email || 
+        !filter_var($email, FILTER_VALIDATE_EMAIL) || 
+        !$phone || 
+        !$nonce) {
         echo json_encode(["success" => false, "message" => "Invalid input"]);
         exit;
     }
@@ -55,7 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode(["success" => true]);
         } else {
             // Payment failed
-            echo json_encode(["success" => false, "message" => "Payment failed"]);
+            $errors = $response->getErrors();
+            echo json_encode(["success" => false, "message" => "Payment failed: " . json_encode($errors)]);
         }
     } catch (ApiException $e) {
         // Handle errors from Square API
