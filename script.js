@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hide interactive elements and start video
     if (startVideoButton && interactiveContent && videoPlayer && masterclassVideo) {
         startVideoButton.addEventListener("click", function () {
+            console.log("Start Video button clicked"); // Debugging output
             interactiveContent.style.display = "none";
             videoPlayer.style.display = "block";
 
-            // Autoplay the YouTube video by modifying the iframe src
             const iframeSrc = masterclassVideo.src;
             if (!iframeSrc.includes("autoplay=1")) {
                 masterclassVideo.src = iframeSrc + "?autoplay=1";
@@ -58,23 +58,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 zelleInstructions.style.display = "none";
             }
         }
-    }
-
-    // Attach event listeners for registration modal
-    const registerButton = document.querySelector(".register-button");
-    const closeRegistrationBtn = document.querySelector(".close-btn");
-
-    if (registerButton) {
-        registerButton.addEventListener("click", openRegistrationModal);
-    }
-
-    if (closeRegistrationBtn) {
-        closeRegistrationBtn.addEventListener("click", closeRegistrationModal);
-    }
-
-    // Attach event listener for payment option change
-    const paymentOption = document.getElementById("paymentOption");
-    if (paymentOption) {
-        paymentOption.addEventListener("change", togglePaymentInstructions);
     }
 });
