@@ -6,7 +6,53 @@
     <title>Delane's Masterclass</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
-
+    <style>
+        .video-container {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+        }
+        .cta-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .modal-content {
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        iframe {
+            width: 100%;
+            height: 315px;
+        }
+    </style>
+</head>
 <body>
 
     <!-- Logo Intro (Fades Out Automatically) -->
@@ -174,4 +220,15 @@
         </div>
     </div>
 
-   
+    <script>
+        document.getElementById('start-video').addEventListener('click', function() {
+            document.getElementById('videoModal').style.display = 'flex'; // Show the video modal
+        });
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').style.display = 'none'; // Hide the video modal
+        }
+    </script>
+
+</body>
+</html>
