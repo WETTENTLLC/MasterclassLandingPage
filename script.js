@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
         startVideoButton.addEventListener("click", function () {
             interactiveContent.style.display = "none";
             videoPlayer.style.display = "block";
-            masterclassVideo.play();
+
+            // Autoplay the YouTube video by modifying the iframe src
+            const iframeSrc = masterclassVideo.src;
+            if (!iframeSrc.includes("autoplay=1")) {
+                masterclassVideo.src = iframeSrc + "?autoplay=1";
+            }
         });
     }
 
