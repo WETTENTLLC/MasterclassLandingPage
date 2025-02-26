@@ -3,57 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bonus Masterclass</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+    <title>Delane's Masterclass</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
     <style>
-        /* Additional styles for the bonus masterclass page */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9; /* Light background color */
-        }
-        
-        h1 {
-            color: #333; /* Heading color */
-        }
-
-        .back-button {
+        .video-container {
+            display: none; /* Initially hidden */
             margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #ffcc00; /* Button background */
-            color: #fff; /* Button text color */
-            border: none;
-            border-radius: 5px;
+        }
+        .cta-button {
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
-            text-decoration: none; /* Remove underline */
         }
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .modal-content {
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        iframe {
+            width: 100%;
+            height: 315px;
+        }
+        .bonus-masterclass {
+    position: fixed; /* Keep it on the side */
+    right: 20px; /* Position from the right */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    background-color: #ffffff; /* Background color for visibility */
+    border: 2px solid #ffcc00; /* Decorative outline */
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's on top of other elements */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    padding: 10px; /* Padding around the content */
+}
 
-        .content {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #fff; /* White background for content */
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+.bonus-arrow {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Text color */
+    font-size: 16px; /* Font size */
+    display: flex;
+    flex-direction: column; /* Stack text and icon vertically */
+    align-items: center; /* Center text and icon */
+}
+
+.arrow-icon {
+    width: 30px; /* Icon size */
+    height: 30px; /* Icon size */
+    margin-bottom: 5px; /* Space between icon and text */
+    transform: rotate(90deg); /* Rotate icon to be vertical */
+}
+
+
     </style>
 </head>
 <body>
 
-    <h1>Bonus Masterclass</h1>
-    
-    <div class="content">
-        <p>This is where the information about the bonus masterclass will go.</p>
-        <p>Placeholder for additional content:</p>
-        <ul>
-            <li>Details about the masterclass</li>
-            <li>Instructor information</li>
-            <li>Schedule and timings</li>
-            <li>How to register</li>
-        </ul>
+    <!-- Logo Intro (Fades Out Automatically) -->
+    <div id="logo-intro" class="logo-container">
+        <img src="assets/images/delanes-masterclass-logo.png" alt="Delane's Masterclass Logo" class="logo">
+        <div class="intro-title">
+            <span>WELCOME TO THE</span>
+            <span class="dnnc">DNNC MASTERCLASS</span>
+        </div>
     </div>
 
-    <a href="index.html" class="back-button">Back to Main Page</a>
+    <!-- Landing Page (Initially Hidden) -->
+    <div id="landing-page" class="hidden">
+        <!-- Interactive Placeholder (On Top of Video Player) -->
+        <div id="interactive-content" class="interactive-container">
+            <!-- Delane's Image -->
+            <img src="assets/images/delane.jpg" alt="Delane Sims" class="delane-image">
+
+            <!-- Sections -->
+            <!-- Interactive Frame for About Mrs. Delane Sims -->
+            <div class="interactive-frame">
+                <h2>Delane Sims</h2>
+                <div class="about-content">
+                    <p>
+                        Meet Delane Sims – Master Pedicurist, Entrepreneur, and Mentor.
+                    </p>
+                    <p>
+                        Delane is more than a master pedicurist—she’s a trailblazer
+                        in the nail care industry, blending healthy nail care with business mastery. As
+                        the founder of Delane’s Natural Nail Care, LLC (DNNC) and the Steps
+                        to Success Nonprofit, she has dedicated her life to elevating the
+                        standards of nail care while empowering aspiring technicians to build
+                        lucrative, client-centered businesses. With decades of hands-on
+                        experience, Delane has developed a unique approach that prioritizes
+                        precision, wellness, and personalized service. Her expertise extends
+                        beyond technique—she teaches the critical business strategies that
+                        transform skilled nail technicians into six-figure entrepreneurs. Her
+                        passion for education, combined with her unwavering commitment to
+                        excellence, has made her an industry leader, shaping the future of nail care one student at a time.
+                    </p>
+                    <p>
+                        Now, through her Masterclass, Delane is offering an exclusive
+                        opportunity to learn the secrets behind her success. This course isn’t
+                        just about perfecting pedicures—it’s about crafting a luxury
+                        experience for clients, mastering advanced foot care techniques, and
+                        developing the business acumen needed to thrive in the beauty
+                        industry. From high-end customer service to effective marketing
+                        strategies, students will gain insider knowledge on how to attract
+                        premium clients, increase revenue, and build a lasting legacy in the
+                        nail care industry. Whether you’re a beginner or a seasoned
+                        professional, this masterclass will equip you with the skills,
+                        confidence, and mentorship needed to step into your greatness. Are
+                        you ready to transform your career and become a true master in the art of pedicuring?
+                    </p>
+                </div>
+            </div>
+
+            <!-- Course Overview Section -->
+            <div class="interactive-frame">
+                <h2>Course Overview</h2>
+                <div class="course-list">
+                    
+                    <!-- Lesson 1 -->
+                    <div class="lesson-frame" onclick="toggleLesson(1)">
+                        <div class="lesson-header">Lesson 1: Nail Care Basics</div>
+                        <div class="lesson-content">
+                            <p>Learn the fundamentals of nail care, including proper cleaning, shaping, and cuticle care.</p>
+                            <ul>
+                                <li>Introduction to tools and products</li>
+                                <li>Step-by-step nail care routine</li>
+                                <li>Common mistakes to avoid</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 2 -->
+                    <div class="lesson-frame" onclick="toggleLesson(2)">
+                        <div class="lesson-header">Lesson 2: Advanced Pedicure Techniques</div>
+                        <div class="lesson-content">
+                            <p>Master advanced pedicure techniques to provide a luxurious experience for your clients.</p>
+                            <ul>
+                                <li>Exfoliation and massage techniques</li>
+                                <li>Using paraffin wax for hydration</li>
+                                <li>Nail art for pedicures</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 3 -->
+                    <div class="lesson-frame" onclick="toggleLesson(3)">
+                        <div class="lesson-header">Lesson 3: Business Strategies</div>
+                        <div class="lesson-content">
+                            <p>Discover the business strategies that will help you grow your nail care business.</p>
+                            <ul>
+                                <li>Marketing and branding tips</li>
+                                <li>Pricing strategies</li>
+                                <li>Client retention techniques</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Lesson 4 -->
+                    <div class="lesson-frame" onclick="toggleLesson(4)">
+                        <div class="lesson-header">Lesson 4: Client Retention</div>
+                        <div class="lesson-content">
+                            <p>Learn how to conduct effective client consultations to understand their needs and preferences.</p>
+                            <ul>
+                                <li>Asking the right questions</li>
+                                <li>Building trust with clients</li>
+                                <li>Customizing services for each client</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sign Up Section -->
+            <div class="interactive-frame">
+                <h2>Sign Up for the Masterclass</h2>
+                <button class="register-button" onclick="window.open('enroll.html', '_blank')">
+                    <span>Register Now</span>
+                </button>
+            </div>
+
+            <!-- Play Button -->
+            <div class="play-button-container">
+                <button id="start-video" class="cta-button">Click to Play Introduction Video</button>
+            </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div id="videoModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeVideoModal()">&times;</span>
+                <iframe
+                    id="masterclass-video"
+                    src="https://www.youtube.com/embed/mtQPfHAF7K0?si=4oPvtzPW_DZ6DxB6"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+    <!-- Popup Registration Form -->
+    <div id="registrationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeRegistrationModal()">&times;</span>
+            <h2>Masterclass Registration</h2>
+            <p>Early Bird Price: $499.99</p>
+            <form id="registrationForm">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <button type="submit">Submit Registration</button>
+            </form>
+        </div>
+    </div>
+
+        <!-- Arrow Link for Bonus Masterclass -->
+<div class="bonus-masterclass">
+    <a href="bonus-masterclass.html" class="bonus-arrow">
+        <img src="assets/images/arrow-icon.png" alt="Arrow Icon" class="arrow-icon">
+        <span>Click For Our Bonus Masterclass</span>
+    </a>
+</div>
+
+
+
+    <script>
+        document.getElementById('start-video').addEventListener('click', function() {
+            document.getElementById('videoModal').style.display = 'flex'; // Show the video modal
+        });
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').style.display = 'none'; // Hide the video modal
+        }
+    </script>
 
 </body>
 </html>
