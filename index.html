@@ -6,6 +6,17 @@
     <title>Delane's Masterclass</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
+    <style>
+        .video-container {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+        }
+        .cta-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -127,9 +138,9 @@
             <div class="interactive-frame">
                 <h2>Sign Up for the Masterclass</h2>
                 <button class="register-button" onclick="window.open('enroll.html', '_blank')">
-            <span>Register Now</span>
-            </button>
-        </div>
+                    <span>Register Now</span>
+                </button>
+            </div>
 
             <!-- Play Button -->
             <div class="play-button-container">
@@ -137,8 +148,8 @@
             </div>
         </div>
 
-            <!-- Video Player (Initially Hidden) -->
-            <div class="video-container">
+        <!-- Video Player (Initially Hidden) -->
+        <div class="video-container">
             <iframe
                 id="masterclass-video"
                 src="https://www.youtube.com/embed/mtQPfHAF7K0?si=4oPvtzPW_DZ6DxB6"
@@ -166,11 +177,16 @@
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
 
-                </select>
-
                 <button type="submit">Submit Registration</button>
             </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById('start-video').addEventListener('click', function() {
+            document.querySelector('.video-container').style.display = 'block'; // Show the video
+        });
+    </script>
+
 </body>
 </html>
