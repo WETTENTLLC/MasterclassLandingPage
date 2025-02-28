@@ -203,3 +203,353 @@ body {
 .modal {
     position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid aqua;
+    max-width: 500px;
+    width: 90%;
+}
+
+.close-modal {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    float: right;
+}
+
+.close-btn {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* === ABOUT CONTENT === */
+.about-content {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    margin: 10px 0;
+    background: rgba(0, 0, 0);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 0);
+    text-align: left;
+    line-height: 1.6;
+}
+
+.about-content p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: white;
+}
+
+/* === SCROLLBAR STYLING === */
+.about-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.about-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.about-content::-webkit-scrollbar-thumb {
+    background: gold;
+    border-radius: 4px;
+}
+
+/* === REGISTRATION BUTTON === */
+.register-button {
+    position: relative;
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.register-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.register-button::before,
+.register-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.register-button::before {
+    border-top-color: gold;
+    border-right-color: gold;
+    animation: trace-button 2s linear forwards;
+}
+
+.register-button::after {
+    border-bottom-color: aqua;
+    border-left-color: aqua;
+    animation: trace-button 2s linear forwards 1s;
+}
+
+@keyframes trace-button {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 100%;
+        height: 0;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.register-button:hover {
+    color: gold;
+}
+
+.register-button:hover::before,
+.register-button:hover::after {
+    border-color: gold;
+}
+
+/* === Registration Page Styles === */
+.registration-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid aqua;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.registration-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: gold;
+}
+
+.registration-container p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.registration-container label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.registration-container input,
+.registration-container select,
+.registration-container button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid aqua;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 1rem;
+}
+
+.registration-container button {
+    background-color: #800020; /* Burgundy */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.registration-container button:hover {
+    background-color: darkred;
+}
+
+#zelleInstructions {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* === BONUS MASTERCLASS SIDEBAR === */
+.bonus-masterclass {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid gold;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.bonus-masterclass:hover {
+    transform: translateY(-50%) translateX(-10px);
+}
+
+.bonus-arrow {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.bonus-arrow:hover {
+    color: gold;
+}
+
+.arrow-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 8px;
+    filter: invert(1);
+    transition: transform 0.3s ease;
+}
+
+.bonus-arrow:hover .arrow-icon {
+    transform: translateX(-5px);
+    filter: invert(0.8) sepia(1) saturate(5) hue-rotate(0deg);
+}
+
+/* === MOBILE RESPONSIVENESS === */
+@media (max-width: 1024px) {
+    .interactive-frame {
+        width: 90%;
+        margin: 10px 0;
+    }
+    
+    .delane-image {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-title {
+        font-size: 1.5rem;
+    }
+    
+    .dnnc {
+        font-size: 2rem;
+    }
+    
+    .interactive-container {
+        padding: 15px;
+    }
+    
+    .delane-image {
+        max-width: 350px;
+    }
+    
+    .bonus-masterclass {
+        padding: 10px;
+        transform: translateY(-50%) translateX(0);
+    }
+    
+    .bonus-arrow span {
+        font-size: 14px;
+    }
+    
+    .arrow-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 200px;
+    }
+    
+    .intro-title {
+        font-size: 1.2rem;
+    }
+    
+    .dnnc {
+        font-size: 1.6rem;
+    }
+    
+    .interactive-container {
+        padding: 10px;
+    }
+    
+    .delane-image {
+        max-width: 280px;
+    }
+    
+    .interactive-frame {
+        padding: 15px;
+    }
+    
+    .lesson-header {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+    
+    .register-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .bonus-masterclass {
+        padding: 8px;
+    }
+    
+    .bonus-arrow span {
+        font-size: 12px;
+    }
+    
+    .arrow-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+}
