@@ -51,131 +51,133 @@
             width: 100%;
             height: 315px;
         }
-
+        .lesson-frame {
+            cursor: pointer;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .lesson-content {
+            display: none;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 <a href="index.html" class="back-button">Back to Main Page</a>
-  
 
-    
-        <!-- Interactive Placeholder (On Top of Video Player) -->
-        <div id="interactive-content" class="interactive-container">
-            <!-- Myeshia Image -->
-            <img src="assets/images/myeshia.jpg" alt="Myeshia Jefferson" class="delane-image">
+    <!-- Interactive Placeholder (On Top of Video Player) -->
+    <div id="interactive-content" class="interactive-container">
+        <!-- Myeshia Image -->
+        <img src="assets/images/myeshia.jpg" alt="Myeshia Jefferson" class="delane-image">
 
-            <!-- Sections -->
-            <!-- Interactive Frame for About Myeshia Jefferson -->
-            <div class="interactive-frame">
-                <h2>Myeshia Jefferson</h2>
-                <div class="about-content">
-                    <p>
-                         Advanced Toe Nail Reconstruction Specialist & Business Mentor
-                    </p>
-                    <p>
-
-                        Myeshia is a highly skilled and experienced nail professional specializing in prosthetic toenail reconstruction and business mastery for nail technicians and entrepreneurs. With years of expertise in foot health, Myeshia has trained countless professionals to elevate their services and increase their earning potential by mastering the art of toenail reconstruction.
-
-                        She is passionate about helping nail technicians transform their businesses, offering practical strategies that enable them to charge premium rates of $150+ per pedicure and build six-figure brands. Her Advanced Toe Nail Reconstruction and Business Mastery Series is designed to provide both technical training and entrepreneurial insight, equipping attendees with the skills needed to expand their service offerings and grow their businesses sustainably.
-
-                    </p>
-                    <p>
-                        As an industry leader, Myeshia emphasizes the importance of proper training, client safety, and advanced techniques to help professionals stand out in the competitive beauty and wellness market. Whether through in-person or virtual training, she is dedicated to educating, mentoring, and inspiring the next generation of nail care experts.
-
-                        Join Myeshia in the DNNC Masterclass as she shares her knowledge, experience, and proven business strategies to help you take your nail career to the next level!
-
-                    </p>
-                </div>
-            </div>
-
-            <!-- Course Overview Section -->
-            <div class="interactive-frame">
-                <h2>Course Overview</h2>
-                <div class="course-list">
-                    
-                    <!-- Lesson 1 -->
-                    <div class="lesson-frame" onclick="toggleLesson(1)">
-                        <div class="lesson-header">Lesson 1: Nail Care Basics</div>
-                        <div class="lesson-content">
-                            <p>Learn the fundamentals of nail care, including proper cleaning, shaping, and cuticle care.</p>
-                            <ul>
-                                <li>Introduction to tools and products</li>
-                                <li>Step-by-step nail care routine</li>
-                                <li>Common mistakes to avoid</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Lesson 2 -->
-                    <div class="lesson-frame" onclick="toggleLesson(2)">
-                        <div class="lesson-header">Lesson 2: Advanced Pedicure Techniques</div>
-                        <div class="lesson-content">
-                            <p>Master advanced pedicure techniques to provide a luxurious experience for your clients.</p>
-                            <ul>
-                                <li>Exfoliation and massage techniques</li>
-                                <li>Using paraffin wax for hydration</li>
-                                <li>Nail art for pedicures</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Lesson 3 -->
-                    <div class="lesson-frame" onclick="toggleLesson(3)">
-                        <div class="lesson-header">Lesson 3: Business Strategies</div>
-                        <div class="lesson-content">
-                            <p>Discover the business strategies that will help you grow your nail care business.</p>
-                            <ul>
-                                <li>Marketing and branding tips</li>
-                                <li>Pricing strategies</li>
-                                <li>Client retention techniques</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Lesson 4 -->
-                    <div class="lesson-frame" onclick="toggleLesson(4)">
-                        <div class="lesson-header">Lesson 4: Client Retention</div>
-                        <div class="lesson-content">
-                            <p>Learn how to conduct effective client consultations to understand their needs and preferences.</p>
-                            <ul>
-                                <li>Asking the right questions</li>
-                                <li>Building trust with clients</li>
-                                <li>Customizing services for each client</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sign Up Section -->
-            <div class="interactive-frame">
-                <h2>Sign Up for the Masterclass</h2>
-                <button class="register-button" onclick="window.open('enroll.html', '_blank')">
-                    <span>Register Now</span>
-                </button>
-            </div>
-
-            <!-- Play Button -->
-            <div class="play-button-container">
-                <button id="start-video" class="cta-button">Click to Play Introduction Video</button>
+        <!-- Sections -->
+        <!-- Interactive Frame for About Myeshia Jefferson -->
+        <div class="interactive-frame">
+            <h2>Myeshia Jefferson</h2>
+            <div class="about-content">
+                <p>
+                    Advanced Toe Nail Reconstruction Specialist & Business Mentor
+                </p>
+                <p>
+                    Myeshia is a highly skilled and experienced nail professional specializing in prosthetic toenail reconstruction and business mastery for nail technicians and entrepreneurs. With years of expertise in foot health, Myeshia has trained countless professionals to elevate their services and increase their earning potential by mastering the art of toenail reconstruction.
+                    She is passionate about helping nail technicians transform their businesses, offering practical strategies that enable them to charge premium rates of $150+ per pedicure and build six-figure brands. Her Advanced Toe Nail Reconstruction and Business Mastery Series is designed to provide both technical training and entrepreneurial insight, equipping attendees with the skills needed to expand their service offerings and grow their businesses sustainably.
+                </p>
+                <p>
+                    As an industry leader, Myeshia emphasizes the importance of proper training, client safety, and advanced techniques to help professionals stand out in the competitive beauty and wellness market. Whether through in-person or virtual training, she is dedicated to educating, mentoring, and inspiring the next generation of nail care experts.
+                    Join Myeshia in the DNNC Masterclass as she shares her knowledge, experience, and proven business strategies to help you take your nail career to the next level!
+                </p>
             </div>
         </div>
 
-        <!-- Video Modal -->
-        <div id="videoModal" class="modal" style="display:none;">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeVideoModal()">&times;</span>
-                <iframe
-                    id="masterclass-video"
-                    src="https://youtu.be/OEUum8DXZsc?si=W8BpVRw4nVpG7QEI"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-                </iframe>
+        <!-- Course Overview Section -->
+        <div class="interactive-frame">
+            <h2>Course Overview</h2>
+            <div class="course-list">
+                
+                <!-- Lesson 1 -->
+                <div class="lesson-frame" onclick="toggleLesson(1)">
+                    <div class="lesson-header">MD Prosthetics Toe Nail Training</div>
+                    <div class="lesson-content">
+                        <p><strong>Duration:</strong> 2 Days</p>
+                        <p><strong>Objective:</strong> Equip participants with advanced prosthetic toenail application techniques to provide high-quality, durable solutions for aesthetic or medical needs.</p>
+                        <ul>
+                            <li>Anatomy and Health of the Toenail: Understanding the structure and common issues of toenails.</li>
+                            <li>Assessment of Nail Conditions: Identifying conditions that can benefit from prosthetic solutions.</li>
+                            <li>Prosthetic Nail Technology and Materials: Overview of the latest materials and technology used in prosthetic nail applications.</li>
+                            <li>Application Techniques: Hands-on training in applying prosthetic nails effectively.</li>
+                            <li>Safety and Sanitation Protocols: Ensuring cleanliness and safety in procedures.</li>
+                            <li>Client Consultation and Customization: Techniques for effective communication and tailoring services to individual client needs.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lesson 2 -->
+                <div class="lesson-frame" onclick="toggleLesson(2)">
+                    <div class="lesson-header">Build a 6 Figure Brand</div>
+                    <div class="lesson-content">
+                        <p><strong>Duration:</strong> 1 Day</p>
+                        <p><strong>Objective:</strong> Teach participants how to develop and scale a beauty brand to achieve six-figure revenues with strategic marketing and branding.</p>
+                        <ul>
+                            <li>Brand Identity and Market Positioning: Creating a unique brand persona and positioning it in the market.</li>
+                            <li>Targeting and Niche Marketing: Identifying and targeting specific customer segments to effectively tailor marketing efforts.</li>
+                            <li>Specialization Strategies: Focusing on a specific area of beauty services to differentiate from competitors and enhance expert status.</li>
+                            <li>Customer Relationship Management: Strategies for building lasting relationships with clients.</li>
+                            <li>Pricing and Revenue Models: Setting prices and developing revenue strategies that maximize profitability.</li>
+                            <li>Legal and Ethical Business & Branding: Understanding the legal considerations and ethical standards in business and branding.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lesson 3 -->
+                <div class="lesson-frame" onclick="toggleLesson(3)">
+                    <div class="lesson-header">90 Days to Launch a 6 Figure Product-Service Based Business</div>
+                    <div class="lesson-content">
+                        <p><strong>Duration:</strong> Online Self-paced (Access for 90 days)</p>
+                        <p><strong>Objective:</strong> Provide a step-by-step blueprint to launch and scale a product or service-based business in under 90 days.</p>
+                        <ul>
+                            <li>Market Research and Analysis: Gathering and analyzing data to understand the market.</li>
+                            <li>Product Development and Service Design: Creating products or services that meet customer needs.</li>
+                            <li>Branding and Pre-launch Marketing: Building a brand and marketing it before launch.</li>
+                            <li>Sales Funnel Creation: Developing a funnel to attract and convert customers.</li>
+                            <li>Operational Management: Managing day-to-day operations effectively.</li>
+                            <li>Post-launch Growth Strategies: Strategies for sustaining and growing the business after launch.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Sign Up Section -->
+        <div class="interactive-frame">
+            <h2>Sign Up for the Masterclass</h2>
+            <button class="register-button" onclick="window.open('enroll.html', '_blank')">
+                <span>Register Now</span>
+            </button>
+        </div>
+
+        <!-- Play Button -->
+        <div class="play-button-container">
+            <button id="start-video" class="cta-button">Click to Play Introduction Video</button>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeVideoModal()">&times;</span>
+            <iframe
+                id="masterclass-video"
+                src="https://youtu.be/OEUum8DXZsc?si=W8BpVRw4nVpG7QEI"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
 
     <!-- Popup Registration Form -->
     <div id="registrationModal" class="modal" style="display: none;">
@@ -198,9 +200,12 @@
         </div>
     </div>
 
-
-
     <script>
+        function toggleLesson(lessonNumber) {
+            const lessonContent = document.querySelector(`.lesson-frame:nth-child(${lessonNumber}) .lesson-content`);
+            lessonContent.style.display = lessonContent.style.display === 'block' ? 'none' : 'block';
+        }
+
         document.getElementById('start-video').addEventListener('click', function() {
             document.getElementById('videoModal').style.display = 'flex'; // Show the video modal
         });
@@ -209,6 +214,5 @@
             document.getElementById('videoModal').style.display = 'none'; // Hide the video modal
         }
     </script>
-
 </body>
 </html>
