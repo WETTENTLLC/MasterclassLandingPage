@@ -60,3 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+<script 
+  id="nailaide-script"
+  src="https://cdn.nailaide.com/embed.js" 
+  data-api-key="YOUR_API_KEY"
+  data-business-name="DNNC & Advanced Pedicure Spa"
+  data-business-type="Nail Salon"
+  data-primary-color="#9333ea"
+  data-position="bottom-right"
+  data-booking-url="https://your-booksy-url.com"
+  async
+></script>
