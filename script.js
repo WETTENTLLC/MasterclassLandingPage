@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <script 
   id="nailaide-script"
   src="https://cdn.nailaide.com/embed.js" 
-  data-api-key="YOUR_API_KEY"
+  data-api-key="8048717a-c465-41dc-8fbe-53cad1fb1c48"
   data-business-name="DNNC & Advanced Pedicure Spa"
   data-business-type="Nail Salon"
   data-primary-color="#9333ea"
