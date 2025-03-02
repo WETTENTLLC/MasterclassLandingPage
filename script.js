@@ -62,40 +62,32 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Load the NailAide script
-const script = document.createElement('script');
-script.src = 'https://cdn.nailaide.com/nailaide.umd.js';
-script.async = true;
-script.onload = function() {
-  // Initialize with configuration
-  const nailaide = NailAide.init({
-    apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48',
-    businessName: 'DNNC MASTERCLASS',
-    businessType: 'Advanced Nail Spa',
-    primaryColor: '#9333ea',
-    position: 'bottom-right',
-    welcomeMessage: 'Hello! How can I help you today?',
-    bookingUrl: 'delanesnaturalnailcare.booksy.com/a',
-    services: [
-      { name: 'Basic Manicure', price: 25, duration: 30 },
-      { name: 'Gel Manicure', price: 35, duration: 45 },
-      { name: 'Basic Pedicure', price: 35, duration: 45 }
-    ]
-  });
-  
-  // Control the widget programmatically
-  document.getElementById('open-chat').addEventListener('click', () => {
-    nailaide.open();
-  });
-  
-  document.getElementById('close-chat').addEventListener('click', () => {
-    nailaide.close();
-  });
-  
-  // Remove the widget completely
-  document.getElementById('remove-chat').addEventListener('click', () => {
-    nailaide.destroy();
-  });
-};
+// Initialize with configuration
+const nailaide = NailAide.init({
+  apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48',
+  businessName: 'DNNC & Advanced Pedicure Spa',
+  businessType: 'Nail Salon',
+  primaryColor: '#9333ea',
+  position: 'bottom-right',
+  welcomeMessage: 'Hello! How can I help you today?',
+  bookingUrl: 'delanesnaturalnailcare.booksy.com/a',
+  services: [
+    { name: 'Basic Manicure', price: 25, duration: 30 },
+    { name: 'Gel Manicure', price: 35, duration: 45 },
+    { name: 'Basic Pedicure', price: 35, duration: 45 }
+  ]
+});
 
-document.head.appendChild(script);
+// Control the widget programmatically
+document.getElementById('open-chat').addEventListener('click', () => {
+  nailaide.open();
+});
+
+document.getElementById('close-chat').addEventListener('click', () => {
+  nailaide.close();
+});
+
+// Remove the widget completely
+document.getElementById('remove-chat').addEventListener('click', () => {
+  nailaide.destroy();
+});
