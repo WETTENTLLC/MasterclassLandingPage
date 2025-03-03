@@ -1,3 +1,6 @@
+// Global function declarations
+let openRegistrationModal, closeRegistrationModal, togglePaymentInstructions;
+
 document.addEventListener("DOMContentLoaded", function() {
     // DOM elements
     const logoIntro = document.getElementById("logo-intro");
@@ -38,24 +41,20 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // 3. Registration modal functions
-    const openRegistrationModal = () => {
-        const modal = document.getElementById("registrationModal");
-        modal?.style.display = "block";
+    openRegistrationModal = () => {
+        document.getElementById("registrationModal")?.style.display = "block";
     };
 
-    const closeRegistrationModal = () => {
-        const modal = document.getElementById("registrationModal");
-        modal?.style.display = "none";
+    closeRegistrationModal = () => {
+        document.getElementById("registrationModal")?.style.display = "none";
     };
 
     // 4. Payment instructions
-    const togglePaymentInstructions = () => {
+    togglePaymentInstructions = () => {
         const paymentOption = document.getElementById("paymentOption");
         const zelleInstructions = document.getElementById("zelleInstructions");
-        if (paymentOption && zelleInstructions) {
-            zelleInstructions.style.display = 
-                paymentOption.value === "zelle" ? "block" : "none";
-        }
+        zelleInstructions.style.display = 
+            paymentOption?.value === "zelle" ? "block" : "none";
     };
 
     // 5. Event listeners
@@ -84,6 +83,8 @@ document.addEventListener("DOMContentLoaded", function() {
         } catch (error) {
             console.error('NailAide init failed:', error);
         }
+    } else {
+        console.warn('NailAide library not loaded');
     }
 
     // 7. Chat controls
@@ -98,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
     initButtonHandler('remove-chat', 'destroy');
 });
 
-// Global functions
-window.openRegistrationModal = openRegistrationModal;
-window.closeRegistrationModal = closeRegistrationModal;
-window.togglePaymentInstructions = togglePaymentInstructions;
+// Assign global functions
+window.openRegistrationModal = () => openRegistrationModal?.();
+window.closeRegistrationModal = () => closeRegistrationModal?.();
+window.togglePaymentInstructions = () => togglePaymentInstructions?.();
