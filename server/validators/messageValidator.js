@@ -10,3 +10,9 @@ export const messageValidation = [
     .isUUID()
     .withMessage('Invalid session ID format')
 ];
+
+app.post('/api/v1/message', 
+  messageValidation, 
+  authenticate, 
+  (req, res) => { /* ... */ }
+);
