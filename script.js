@@ -1,27 +1,32 @@
-// Initialize NailAide with your configuration
-var nailAideInstance = NailAide.init({
-  apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48',
-  businessName: 'DNNC & Advanced Pedicure Spa',
-  businessType: 'Nail Salon',
-  primaryColor: '#9333ea',
-  position: 'bottom-right',
-  welcomeMessage: 'Hello! How can I help you today?',
-  bookingUrl: 'delanesnaturalnailcare.booksy.com',
-  services: [
-    { name: 'Basic Manicure', price: 25, duration: 30 },
-    { name: 'Gel Manicure', price: 35, duration: 45 },
-    { name: 'Basic Pedicure', price: 35, duration: 45 }
-  ]
-});
-
-// Wait for the DOM to be fully loaded before accessing elements
+// Wait for the DOM to be fully loaded before initializing NailAide
 document.addEventListener("DOMContentLoaded", function() {
+  // Make sure NailAide is available before initializing
+  if (typeof NailAide !== 'undefined') {
+    // Initialize NailAide with your configuration
+    window.nailAideInstance = NailAide.init({
+      apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48',
+      businessName: 'DNNC & Advanced Pedicure Spa',
+      businessType: 'Nail Salon',
+      primaryColor: '#9333ea',
+      position: 'bottom-right',
+      welcomeMessage: 'Hello! How can I help you today?',
+      bookingUrl: 'delanesnaturalnailcare.booksy.com',
+      services: [
+        { name: 'Basic Manicure', price: 25, duration: 30 },
+        { name: 'Gel Manicure', price: 35, duration: 45 },
+        { name: 'Basic Pedicure', price: 35, duration: 45 }
+      ]
+    });
+  } else {
+    console.error('NailAide is not loaded. Check if the script is properly included.');
+  }
+
   // Check if elements exist before adding event listeners
   const openChatButton = document.getElementById('open-chat');
   if (openChatButton) {
     openChatButton.addEventListener('click', function() {
-      if (nailAideInstance && nailAideInstance.open) {
-        nailAideInstance.open();
+      if (window.nailAideInstance && window.nailAideInstance.open) {
+        window.nailAideInstance.open();
       } else {
         console.error('NailAide is not properly initialized');
       }
@@ -31,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const closeChatButton = document.getElementById('close-chat');
   if (closeChatButton) {
     closeChatButton.addEventListener('click', function() {
-      if (nailAideInstance && nailAideInstance.close) {
-        nailAideInstance.close();
+      if (window.nailAideInstance && window.nailAideInstance.close) {
+        window.nailAideInstance.close();
       } else {
         console.error('NailAide is not properly initialized');
       }
@@ -42,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const removeChatButton = document.getElementById('remove-chat');
   if (removeChatButton) {
     removeChatButton.addEventListener('click', function() {
-      if (nailAideInstance && nailAideInstance.destroy) {
-        nailAideInstance.destroy();
+      if (window.nailAideInstance && window.nailAideInstance.destroy) {
+        window.nailAideInstance.destroy();
       } else {
         console.error('NailAide is not properly initialized');
       }
@@ -75,10 +80,9 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log("Start Video button clicked"); // Debugging output
       interactiveContent.style.display = "none";
       videoPlayer.style.display = "block";
-
       const iframeSrc = masterclassVideo.src;
-      if (!iframeSrc.includes("autoplay=1")) {
-        masterclassVideo.src = iframeSrc + "?autoplay=1";
+      if (iframeSrc && !iframeSrc.includes("autoplay=1")) {
+        masterclassVideo.src = iframeSrc + (iframeSrc.includes("?") ? "&" : "?") + "autoplay=1";
       }
     });
   }
@@ -103,10 +107,6 @@ function togglePaymentInstructions() {
   const paymentOption = document.getElementById("paymentOption");
   const zelleInstructions = document.getElementById("zelleInstructions");
   if (paymentOption && zelleInstructions) {
-    if (paymentOption.value === "zelle") {
-      zelleInstructions.style.display = "block";
-    } else {
-      zelleInstructions.style.display = "none";
-    }
+    zelleInstructions.style.display = paymentOption.value === "zelle" ? "block" : "none";
   }
 }
