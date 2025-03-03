@@ -1,42 +1,44 @@
-// Load the NailAide script
-const script = document.createElement('script');
-script.src = 'https://cdn.nailaide.com/nailaide.umd.js';
-script.async = true;
-script.onload = function() {
-  // Initialize with configuration
-  const nailaide = NailAide.init({
-    apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48',
-    businessName: 'Your Salon Name',
-    businessType: 'Nail Salon',
-    primaryColor: '#9333ea',
-    position: 'bottom-right',
-    welcomeMessage: 'Hello! How can I help you today?',
-    bookingUrl: 'https://your-booksy-url.com',
-    services: [
-      { name: 'Basic Manicure', price: 25, duration: 30 },
-      { name: 'Gel Manicure', price: 35, duration: 45 },
-      { name: 'Basic Pedicure', price: 35, duration: 45 }
-    ]
-  });
-  
-  // Control the widget programmatically
-  document.getElementById('open-chat').addEventListener('click', () => {
-    nailaide.open();
-  });
-  
-  document.getElementById('close-chat').addEventListener('click', () => {
-    nailaide.close();
-  });
-  
-  // Remove the widget completely
-  document.getElementById('remove-chat').addEventListener('click', () => {
-    nailaide.destroy();
-  });
-};
+// Initialize NailAide with your configuration
+var nailAideInstance = NailAide.init({
+  apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48',
+  businessName: 'DNNC & Advanced Pedicure Spa',
+  businessType: 'Nail Salon',
+  primaryColor: '#9333ea',
+  position: 'bottom-right',
+  welcomeMessage: 'Hello! How can I help you today?',
+  bookingUrl: 'delanesnaturalnailcare.booksy.com',
+  services: [
+    { name: 'Basic Manicure', price: 25, duration: 30 },
+    { name: 'Gel Manicure', price: 35, duration: 45 },
+    { name: 'Basic Pedicure', price: 35, duration: 45 }
+  ]
+});
 
-document.head.appendChild(script);
+// Button to open chat
+document.getElementById('open-chat').addEventListener('click', function() {
+  if (nailAideInstance && nailAideInstance.open) {
+    nailAideInstance.open();
+  } else {
+    console.error('NailAide is not properly initialized');
+  }
+});
 
+document.getElementById('close-chat').addEventListener('click', function() {
+  if (nailAideInstance && nailAideInstance.close) {
+    nailAideInstance.close();
+  } else {
+    console.error('NailAide is not properly initialized');
+  }
+});
 
+// Remove the widget completely
+document.getElementById('remove-chat').addEventListener('click', function() {
+  if (nailAideInstance && nailAideInstance.destroy) {
+    nailAideInstance.destroy();
+  } else {
+    console.error('NailAide is not properly initialized');
+  }
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     const logoIntro = document.getElementById("logo-intro");
@@ -99,35 +101,4 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
-});
-
-
-// Initialize with configuration
-var nailAideInstance = NailAide.init({
-  apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48',
-  businessName: 'DNNC & Advanced Pedicure Spa',
-  businessType: 'Nail Salon',
-  primaryColor: '#9333ea',
-  position: 'bottom-right',
-  welcomeMessage: 'Hello! How can I help you today?',
-  bookingUrl: 'delanesnaturalnailcare.booksy.com,
-  services: [
-    { name: 'Basic Manicure', price: 25, duration: 30 },
-    { name: 'Gel Manicure', price: 35, duration: 45 },
-    { name: 'Basic Pedicure', price: 35, duration: 45 }
-  ]
-});
-
-// Control the widget programmatically
-document.getElementById('open-chat').addEventListener('click', () => {
-  nailaide.open();
-});
-
-document.getElementById('close-chat').addEventListener('click', () => {
-  nailaide.close();
-});
-
-// Remove the widget completely
-document.getElementById('remove-chat').addEventListener('click', () => {
-  nailaide.destroy();
 });
