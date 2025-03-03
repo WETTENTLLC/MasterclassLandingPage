@@ -103,14 +103,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Initialize with configuration
-const nailaide = NailAide.init({
+var nailAideInstance = NailAide.init({
   apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48',
   businessName: 'DNNC & Advanced Pedicure Spa',
   businessType: 'Nail Salon',
   primaryColor: '#9333ea',
   position: 'bottom-right',
   welcomeMessage: 'Hello! How can I help you today?',
-  bookingUrl: 'delanesnaturalnailcare.booksy.com/a',
+  bookingUrl: 'delanesnaturalnailcare.booksy.com,
   services: [
     { name: 'Basic Manicure', price: 25, duration: 30 },
     { name: 'Gel Manicure', price: 35, duration: 45 },
