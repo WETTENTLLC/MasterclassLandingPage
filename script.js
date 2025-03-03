@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    document.addEventListener("DOMContentLoaded", function() {
+    // Wait for NailAide to load
+    if (typeof NailAide === 'undefined') {
+        console.error('NailAide library not loaded');
+        return;
+    }
+
+    // Initialize after verifying existence
+    let nailAideInstance;
+    try {
+        nailAideInstance = NailAide.init({
+            apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48',
+            // ... rest of config
+        });
+    } catch (error) {
+        console.error('NailAide initialization failed:', error);
+    }
+    
     // Initialize NailAide after DOM load
     let nailAideInstance = null;
     
