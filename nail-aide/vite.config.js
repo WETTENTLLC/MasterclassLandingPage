@@ -6,7 +6,18 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/NailAideWidget.jsx',
-      name: 'NailAide'
+      name: 'NailAide',
+      fileName: 'nailaide',
+      formats: ['umd']
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM'
+        }
+      }
     }
   }
 })
