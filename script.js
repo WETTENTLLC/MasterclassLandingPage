@@ -1,6 +1,3 @@
-// Global function declarations
-let openRegistrationModal, closeRegistrationModal, togglePaymentInstructions;
-
 document.addEventListener("DOMContentLoaded", function() {
     // DOM elements
     const logoIntro = document.getElementById("logo-intro");
@@ -41,20 +38,22 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // 3. Registration modal functions
-    openRegistrationModal = () => {
+    window.openRegistrationModal = () => {
         document.getElementById("registrationModal")?.style.display = "block";
     };
 
-    closeRegistrationModal = () => {
+    window.closeRegistrationModal = () => {
         document.getElementById("registrationModal")?.style.display = "none";
     };
 
     // 4. Payment instructions
-    togglePaymentInstructions = () => {
+    window.togglePaymentInstructions = () => {
         const paymentOption = document.getElementById("paymentOption");
         const zelleInstructions = document.getElementById("zelleInstructions");
-        zelleInstructions.style.display = 
-            paymentOption?.value === "zelle" ? "block" : "none";
+        if (paymentOption && zelleInstructions) {
+            zelleInstructions.style.display = 
+                paymentOption.value === "zelle" ? "block" : "none";
+        }
     };
 
     // 5. Event listeners
@@ -98,8 +97,3 @@ document.addEventListener("DOMContentLoaded", function() {
     initButtonHandler('close-chat', 'close');
     initButtonHandler('remove-chat', 'destroy');
 });
-
-// Assign global functions
-window.openRegistrationModal = () => openRegistrationModal?.();
-window.closeRegistrationModal = () => closeRegistrationModal?.();
-window.togglePaymentInstructions = () => togglePaymentInstructions?.();
