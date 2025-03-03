@@ -211,18 +211,27 @@
             document.getElementById('registrationModal').style.display = 'none';
         }
     </script>
-<div id="nailaide-root"></div>
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="/nail-aide/dist/nailaide.umd.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    NailAide.init({
-      apiKey: '8048717a-c465-41dc-8fbe-53cad1fb1c48.com',
-      position: 'bottom-right'
+
+        <!-- Load React and ReactDOM (required dependencies) -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    -- Load NailAide (adjust path for your repository) -->
+    <script src="./nail-aide/nailaide.umd.js"></script>
+
+    <script>
+    // Initialize NailAide
+    const nailaide = NailAide.init({
+    apiKey: 'demo-api-key',
+    businessName: 'Your Salon Name',
+    businessType: 'Nail Salon',
+    primaryColor: '#9333ea',
+    position: 'bottom-right',
+    welcomeMessage: 'Hello! How can I help you today?',
+    bookingUrl: 'delanesnaturalnailcare.booksy.com'
     });
-  });
-</script>
+    </script>
+
 
 </body>
 </html>
