@@ -9,86 +9,61 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 1. Intro fade sequence
     if (logoIntro && landingPage) {
-        // Initial state setup
         logoIntro.style.opacity = "1";
         landingPage.style.display = "none";
 
         setTimeout(() => {
             logoIntro.style.opacity = "0";
             
-            // When transition completes
             logoIntro.addEventListener('transitionend', () => {
                 logoIntro.style.display = "none";
                 landingPage.style.display = "block";
-                setTimeout(() => {
-                    landingPage.style.opacity = '1';
-                }, 50);
+                setTimeout(() => landingPage.style.opacity = '1', 50);
             }, { once: true });
         }, 3000);
     }
 
-    // 2. Video player controls
+    // 2. Video controls
     if (startVideoButton && interactiveContent && videoPlayer && masterclassVideo) {
-        startVideoButton.addEventListener("click", function() {
+        startVideoButton.addEventListener("click", () => {
             interactiveContent.style.display = "none";
             videoPlayer.style.display = "block";
             
-            // Handle autoplay properly
             if (masterclassVideo.paused) {
-                const playPromise = masterclassVideo.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.log('Video autoplay prevented:', error);
-                    });
-                }
+                masterclassVideo.play().catch(error => {
+                    console.log('Video play failed:', error);
+                });
             }
         });
     }
 
     // 3. Registration modal functions
-    function openRegistrationModal() {
+    const openRegistrationModal = () => {
         const modal = document.getElementById("registrationModal");
-        if (modal) {
-            modal.style.display = "block";
-        }
-    }
+        modal?.style.display = "block";
+    };
 
-    function closeRegistrationModal() {
+    const closeRegistrationModal = () => {
         const modal = document.getElementById("registrationModal");
-        if (modal) {
-            modal.style.display = "none";
-        }
-    }
+        modal?.style.display = "none";
+    };
 
-    // 4. Payment instructions toggle
-    function togglePaymentInstructions() {
+    // 4. Payment instructions
+    const togglePaymentInstructions = () => {
         const paymentOption = document.getElementById("paymentOption");
         const zelleInstructions = document.getElementById("zelleInstructions");
         if (paymentOption && zelleInstructions) {
             zelleInstructions.style.display = 
                 paymentOption.value === "zelle" ? "block" : "none";
         }
-    }
+    };
 
-    // 5. Event listeners for modal
-    const registerButton = document.querySelector(".register-button");
-    const closeRegistrationBtn = document.querySelector(".close-btn");
+    // 5. Event listeners
+    document.querySelector(".register-button")?.addEventListener("click", openRegistrationModal);
+    document.querySelector(".close-btn")?.addEventListener("click", closeRegistrationModal);
+    document.getElementById("paymentOption")?.addEventListener("change", togglePaymentInstructions);
 
-    if (registerButton) {
-        registerButton.addEventListener("click", openRegistrationModal);
-    }
-
-    if (closeRegistrationBtn) {
-        closeRegistrationBtn.addEventListener("click", closeRegistrationModal);
-    }
-
-    // 6. Payment option change listener
-    const paymentOption = document.getElementById("paymentOption");
-    if (paymentOption) {
-        paymentOption.addEventListener("change", togglePaymentInstructions);
-    }
-
-    // 7. NailAide initialization (Moved after DOM elements)
+    // 6. NailAide initialization
     let nailAideInstance = null;
     if (typeof NailAide !== 'undefined') {
         try {
@@ -107,21 +82,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 ]
             });
         } catch (error) {
-            console.error('Failed to initialize NailAide:', error);
+            console.error('NailAide init failed:', error);
         }
-    } else {
-        console.warn('NailAide library not loaded');
     }
 
-    // 8. Chat control handlers
+    // 7. Chat controls
     const initButtonHandler = (elementId, action) => {
-        const element = document.getElementById(elementId);
-        element?.addEventListener('click', () => {
-            if (nailAideInstance?.[action]) {
-                nailAideInstance[action]();
-            } else {
-                console.warn(`NailAide ${action} method not available`);
-            }
+        document.getElementById(elementId)?.addEventListener('click', () => {
+            nailAideInstance?.[action]?.();
         });
     };
 
@@ -130,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
     initButtonHandler('remove-chat', 'destroy');
 });
 
-// Global functions for HTML onclick handlers
+// Global functions
 window.openRegistrationModal = openRegistrationModal;
 window.closeRegistrationModal = closeRegistrationModal;
 window.togglePaymentInstructions = togglePaymentInstructions;
